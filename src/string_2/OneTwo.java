@@ -10,8 +10,31 @@ oneTwo("tcagdo") → "catdog"
 
 public class OneTwo {
 	public String oneTwo(String str) {
-		StringBuilder result = new StringBuilder();
-		
-		
+		if (str.length() < 3) {
+			return "";
+		}
+
+		StringBuilder result = new StringBuilder(str);
+		int positionInResult = 0;
+
+		// deleting group of fewer then 3 chars
+		int areOnlyGroupOf3 = result.length() % 3;
+		boolean anyToIgnore = areOnlyGroupOf3 != 0;
+		if (anyToIgnore) {
+			result.delete(result.length() - areOnlyGroupOf3, result.length());
+		}
+
+		// computing new string
+		for (; positionInResult < str.length() - 2;) {
+			char tmp1 = result.charAt(positionInResult);
+			char tmp2 = result.charAt(positionInResult + 2);
+
+			result.deleteCharAt(positionInResult);
+			result.deleteCharAt(positionInResult + 1);
+			result.insert(positionInResult + 1, tmp2);
+			result.insert(positionInResult + 2, tmp1);
+			positionInResult += 3;
+		}
+		return result.toString();
 	}
 }

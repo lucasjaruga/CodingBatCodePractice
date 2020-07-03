@@ -12,21 +12,37 @@ class MakeChocolate {
 	public int makeChocolate(int small, int big, int goal) {
 		// small bar - 1
 		// big bar - 5
-			
-		
-		// WORK IN PROGRESS
-		
-		if(goal > big*5 + small){
-			return -1;
-		} else if(goal == big*5 + small) {
-			return small;
-		} else if(goal%5 <= small) {
-			return goal%5;
+
+		int bigBarsKilos = big * 5;
+		boolean areBigEnough = goal - bigBarsKilos == 0;
+		int howManySmall = 0;
+
+		if (areBigEnough) {
+			return 0;
+		} else if (goal % 5 == 0 && bigBarsKilos + small >= goal) {
+			int howManyBig = goal / 5;
+			if (howManyBig <= big) {
+				howManySmall = goal - (howManyBig * 5);
+				return howManySmall;
+			} else {
+				howManySmall = goal - bigBarsKilos;
+				if (howManySmall <= small) {
+					return howManySmall;
+				} else {
+					return -1;
+				}
+			}
+		} else if (goal % 5 != 0 && goal % 5 <= small) {
+			if (goal - bigBarsKilos < 0) {
+				return howManySmall = goal % 5;
+			} else if(goal - bigBarsKilos <= small) {
+				howManySmall = goal - bigBarsKilos;
+				return howManySmall;
+			} else {
+				return -1;
+			}
 		} else {
 			return -1;
 		}
-		
-		
-		
 	}
 }
