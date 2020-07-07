@@ -14,6 +14,10 @@ public class StarOut {
 
 		if (firstStar == -1)
 			return str;
+		
+		if(str.length() <= 3 && firstStar != -1) {
+			return "";
+		}
 
 		StringBuilder result = new StringBuilder(str);
 		int lastStar = 0;
@@ -21,10 +25,13 @@ public class StarOut {
 
 		while (isMoreStar) {
 			for (int positionInResult = firstStar; positionInResult < result.length(); positionInResult++) {
-				
+				if(str.indexOf('*', positionInResult + 1) != -1) {
+					lastStar = str.indexOf('*', positionInResult + 1);
+				} else {
+					isMoreStar = false;
+				}
 			}
 		}
-
 		return result.toString();
 	}
 }
