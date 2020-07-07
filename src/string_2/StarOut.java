@@ -9,29 +9,46 @@ starOut("sm*eilly") → "silly"
  */
 
 public class StarOut {
-	public String starOut(String str) {
-		int firstStar = str.indexOf('*');
+	public static String starOut(String str) {
+		int isStar = str.indexOf('*');
 
-		if (firstStar == -1)
+		// no star at all
+		if (isStar == -1)
 			return str;
-		
-		if(str.length() <= 3 && firstStar != -1) {
+
+		// str shorter then 4 chars and no star
+		if (str.length() <= 3 && isStar != -1) {
 			return "";
 		}
 
 		StringBuilder result = new StringBuilder(str);
-		int lastStar = 0;
-		boolean isMoreStar = true;
+		if (result.charAt(0) == '*') {
+			result.delete(0, 2);
+		} else if (result.charAt(result.length() - 1) == '*') {
+			result.delete(result.length() - 2, result.length());
+		}
 
-		while (isMoreStar) {
-			for (int positionInResult = firstStar; positionInResult < result.length(); positionInResult++) {
-				if(str.indexOf('*', positionInResult + 1) != -1) {
-					lastStar = str.indexOf('*', positionInResult + 1);
-				} else {
-					isMoreStar = false;
+		for (int i = 0; i < result.length(); i++) {
+			int starPosition = result.indexOf("*");
+			if (starPosition != -1) {
+				int deleteTo = starPosition;
+				for (int j = starPosition + 1; i < result.length(); j++) {
+					if (result.charAt(j) == '*') {
+						deleteTo++;
+					} else {
+						break;
+					}
 				}
+				result.delete(starPosition - 1, deleteTo + 2);
+			} else {
+				break;
 			}
 		}
 		return result.toString();
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(starOut("sm***eil*ly"));
+	}
+	
 }
