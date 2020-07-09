@@ -10,8 +10,23 @@ stringMatch("abc", "axc") → 0
 
 public class StringMatch {
 	public int stringMatch(String a, String b) {
-		  int couter = 0;
-		  
-		  for(int i = 0; i < )
+		int counter = 0;
+		int shorterStrLength;
+
+		if (a.length() > b.length()) {
+			shorterStrLength = b.length();
+		} else {
+			shorterStrLength = a.length();
+		}
+
+		for (int i = 0; i < shorterStrLength - 1; i++) {
+			String tmp1 = a.substring(i, i + 2);
+			String tmp2 = b.substring(i, i + 2);
+
+			if (tmp1.equals(tmp2)) {
+				counter++;
+			}
+		}
+		return counter;
 	}
 }
