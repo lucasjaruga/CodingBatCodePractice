@@ -14,15 +14,20 @@ mapAB2({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "
 public class MapAB2 {
 	public static Map<String, String> mapAB2(Map<String, String> map) {
 		boolean isAB = map.containsKey("a") && map.containsKey("b");
-		boolean areEq = map.get("a") == map.get("b");
-		
+		boolean areEq;
+		if (isAB) {
+			areEq = map.get("a").equals(map.get("b"));
+		} else {
+			areEq = false;
+		}
+			
 		if (isAB && areEq) {
 			map.remove("a");
 			map.remove("b");
 		}
 		return map;
 	}
-	
+
 	public static void main(String[] args) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("a", "aaa");
