@@ -10,6 +10,10 @@ swapEnds([8, 6, 7, 9, 5]) → [5, 6, 7, 9, 8]
 
 public class SwapEnds {
 	public int[] swapEnds(int[] nums) {
+		int tmp = nums[nums.length - 1];
+		nums[nums.length - 1] = nums[0];
+		nums[0] = tmp;
 		
+		return nums;
 	}
 }
