@@ -16,7 +16,7 @@ public class MatchUp {
 			int number1 = nums1[position];
 			int number2 = nums2[position];
 			
-			if(Math.abs(number1 - number1) <= 2) {
+			if(number1 != number2 && Math.abs(number1 - number2) <= 2) {
 				counter++;
 			}
 		}
