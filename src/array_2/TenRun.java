@@ -30,6 +30,5 @@ public class TenRun {
 
 	public static void main(String[] args) {
 
-		int[] nums = { 2, 10, 3, 4, 20, 5 };
 	}
 }
