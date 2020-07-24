@@ -9,7 +9,35 @@ centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
  */
 
 public class CenteredAverage {
-	public int centeredAverage(int[] nums) {
+	public static int centeredAverage(int[] nums) {
+		int theSmallestVal = Math.min(nums[0], nums[1]);
+		int theBiggestVal = Math.max(nums[0], nums[1]);
+
+		for (int i = 2; i < nums.length; i++) {
+			if (nums[i] < theSmallestVal) {
+				theSmallestVal = nums[i];
+			}
+			if (nums[i] > theBiggestVal) {
+				theBiggestVal = nums[i];
+			}
+		}
 		
+		int sum = 0;
+		
+		for(int x : nums) {
+			sum += x;
+		}
+		
+		sum = sum - theSmallestVal - theBiggestVal;
+		
+		int result = sum / (nums.length - 2);
+		
+		return result;
+	}
+	
+	public static void main(String[] args) {
+		
+		int [] nums = {1, 2, 3, 4, 100};
+		System.out.println(centeredAverage(nums));
 	}
 }
