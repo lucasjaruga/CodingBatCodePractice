@@ -10,12 +10,12 @@ fix34([3, 2, 2, 4]) → [3, 4, 2, 2]
 
 public class Fix34 {
 	public static int[] fix34(int[] nums) {
-		int positionOfLast4 = 0;
 
 		for (int i = 0; i < nums.length - 1; i++) {
 
 			// if 3 founded then start searching a 4
 			if (nums[i] == 3) {
+				int positionOfLast4 = 0;
 
 				// start searching 4 from last known position of 4 to avoid situations when 4 is
 				// before 3. It would provide a wrong end result
@@ -31,7 +31,6 @@ public class Fix34 {
 				nums[i + 1] = nums[positionOfLast4];
 				nums[positionOfLast4] = tmp;
 			}
-
 		}
 		return nums;
 	}
