@@ -6,46 +6,46 @@ We'll say that a "mirror" section in an array is a group of contiguous elements 
 maxMirror([1, 2, 3, 8, 9, 3, 2, 1]) → 3
 maxMirror([1, 2, 1, 4]) → 3
 maxMirror([7, 1, 2, 9, 7, 2, 1]) → 2
+
+12389321
+12398321
+
+1214	1214
+0123	3210
+
+7129721  1279217
+0123456  6543210
+
  */
 
 public class MaxMirror {
 	public static int maxMirror(int[] nums) {
-
 		int sizeOfTheLargestMirror = 0;
-
-		int[] reversed = new int[nums.length];
-		int positionInNums = 0;
-		for (int i = nums.length - 1; i >= 0; i--) {
-			reversed[i] = nums[positionInNums];
-			positionInNums++;
-		}
-
-		for (int i = 0; i < nums.length; i++) {
-
-			boolean startCounting = false;
-
-			if (nums[i] == reversed[i]) {
-				startCounting = true;
-			} else {
-				startCounting = false;
-			}
-
-			int counterOfSize = 0;
-			if (startCounting) {
-				counterOfSize++;
-			}
-
-			if (sizeOfTheLargestMirror < counterOfSize) {
-				sizeOfTheLargestMirror = counterOfSize;
+		int arrLength = nums.length - 1;
+		
+		for(int i = 0; i < nums.length; i++) {
+			int counter = 0;
+			if(nums[i] == nums[arrLength]) {
+				counter++;
+				
+				for(int j = arrLength; j > 0; j--) {
+					if(nums[i+counter] == nums[j]) {
+						counter++;
+					} else {
+						
+					}
+				}
 			}
 		}
-
+		
+		
+		
 		return sizeOfTheLargestMirror;
 	}
 
 	public static void main(String[] args) {
 
-		int[] nums = { 1, 2, 1, 4 };
+		int[] nums = { 7, 1, 2, 9, 7, 2, 1 };
 
 		System.out.println(maxMirror(nums));
 
