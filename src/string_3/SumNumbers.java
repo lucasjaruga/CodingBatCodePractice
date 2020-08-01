@@ -10,23 +10,26 @@ sumNumbers("7 11") → 18
 
 public class SumNumbers {
 	public static int sumNumbers(String str) {
-		
+
 		int sum = 0;
-		
+
+		// start searching
 		for (int i = 0; i < str.length(); i++) {
-
+			// if char inside String is digit start calculate number to add
 			if (Character.isDigit(str.charAt(i))) {
-
+				// creating tmp value
 				StringBuilder numberToSum = new StringBuilder();
-
+				// checking if number has more then one digit
 				for (int j = i; j <= str.length(); j++) {
 					if (j < str.length() && Character.isDigit(str.charAt(j))) {
 						numberToSum.append(str.charAt(j));
+						// if not then save where checking ended to save time
 					} else {
 						i = j;
 						break;
 					}
 				}
+				// add tmp value to sum
 				sum += Integer.parseInt(numberToSum.toString());
 			}
 		}
