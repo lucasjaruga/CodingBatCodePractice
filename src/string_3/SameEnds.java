@@ -14,6 +14,7 @@ public class SameEnds {
 		String result = "";
 		int lengthOfResult = 0;
 
+		// start comparing; divide string length by 2 to avoid overlapping
 		for (int i = 0; i < string.length() / 2; i++) {
 
 			// create beginning and the end to compare
