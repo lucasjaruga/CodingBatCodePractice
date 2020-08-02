@@ -15,10 +15,15 @@ public class CountTriple {
 
 		for (int i = 0; i < str.length() - 2; i++) {
 
+			// if str length is less then 2 then it's impossible to find any triples. Break
+			// for loop and return 0
 			if (str.length() > 2) {
+				// take 3 elements which appears three times in a row
 				char tmp1 = str.charAt(i);
 				char tmp2 = str.charAt(i + 1);
 				char tmp3 = str.charAt(i + 2);
+
+				// if they are same then increase counter of Triples
 				if (tmp1 == tmp2 && tmp2 == tmp3) {
 					noTriples++;
 				}
