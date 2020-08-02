@@ -12,7 +12,7 @@ gHappy("xxggyygxx") → false
 public class GHappy {
 	public boolean gHappy(String str) {
 		
-		// I'm not really proud of that solution but I cound't figure out a better one so far
+		// I'm not really proud of that solution but I couldn't figure out a better one so far
 
 		boolean result = true;
 

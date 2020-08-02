@@ -16,10 +16,13 @@ class WithoutString {
 		
 		// creating an editable form of >base< String
 		StringBuilder afterRemove = new StringBuilder(base);
+		
 		// creating  copy of >base< String which won't be case sensitive
 		StringBuilder StrBuffer = new StringBuilder(base.toLowerCase());
+		
 		// creating copy of >remove< String which won't be case sensitive
 		String strToRemove = remove.toLowerCase();
+		
 		// checking where exactly the String to remove starts
 		int isSthToRemove = StrBuffer.indexOf(strToRemove);
 		
